@@ -1,0 +1,298 @@
+/* Estilos generales */
+
+.root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.header {
+    height: 7rem;
+    width: 100%;
+    background-color: blueviolet;
+    display: grid;
+    grid-template-columns: 60% 30% 10%;
+    padding: 1rem;
+}
+
+.header h1 {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+}
+
+.cosas {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.header a {
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+    height: 75%;
+    justify-self: center;
+    align-self: center;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+}
+
+/* Separador */
+.separador {
+    display: flex;
+    width: 100%;
+    height: 5rem;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 1rem;
+    background-color: #f4f4f4;
+}
+
+.categorias {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.categorias input[type='checkbox'] {
+    margin-right: 5px;
+}
+
+/* Cuerpo */
+.cuerpo {
+    height: 50rem;
+    width: 50rem;
+    background-image: url(https://1.bp.blogspot.com/-Fwitw1VzyRM/W5p4U3CxzoI/AAAAAAAACiA/_f9juyhzAEc7V8JayKP4di49DEQnJsg4ACLcBGAs/s1600/motherboard-683247_1920.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: grid;
+    grid-template-columns: repeat(40, 1fr);
+    grid-template-rows: repeat(40, 1fr);
+}
+
+.componente {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    text-align: center;
+    font-size: 1rem;
+    color: #333;
+}
+.componente-1 { /* CPU */
+    grid-column: 30/37;
+    grid-row: 17/23;
+}
+.componente-2 { /* RAM */
+    grid-column: 16/37;
+    grid-row: 31/33;
+}
+.componente-3 { /* Tarjeta Grafica */
+    grid-column: 13/14;
+    grid-row: 14/26;
+}
+.componente-4 { /* PSI 1 */
+    grid-column: 3/4;
+    grid-row: 11/22;
+}
+.componente-5 { /* PSI 2 */
+    grid-column: 6/7;
+    grid-row: 11/22;
+}
+.componente-6 { /* PSI 3 */
+    grid-column: 10/11;
+    grid-row: 11/22;
+}
+.componente-7 { /* DSisco duro */
+    grid-column: 25/32;
+    grid-row: 38/39;
+}
+.componente-8 { /* ventiladores */
+    grid-column: 15/23;
+    grid-row: 36/37;
+}
+.componente-9 { /* Fuente alimentacion */
+    grid-column: 15/23;
+    grid-row: 38/39;
+}
+.componente-11 { /* CHIP */
+    grid-column: 15/31;
+    grid-row: 2/5;
+}
+.componente-10 { /* Conector */
+    grid-column: 19/25;
+    grid-row: 20/26;
+}
+.componente-12 { /* disco */
+    grid-column: 17/25;
+    grid-row: 12/16;
+}
+.componente-13 { /* USB */
+    grid-column: 35/37;
+    grid-row: 3/6;
+}
+
+.componente img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 2% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+.modal-title {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.modal-description {
+    font-size: 2rem;
+    margin: 15px 0;
+}
+
+.modal-image {
+    width: 15rem;
+    height: 15rem;
+    object-fit: contain;
+    margin: auto;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Footer */
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+}
+.pintado {
+    background-color: #f0f0f0;
+    border: 2px solid #000;
+}
+
+/* Media Queries para Responsividad */
+
+/* Para pantallas FHD y mayores */
+@media (min-width: 1920px) {
+    .cuerpo {
+        width: 70rem; /* Ajusta el tamaño según tus necesidades */
+        height: 70rem;
+    }
+}
+
+/* Para pantallas HD */
+@media (min-width: 1280px) and (max-width: 1919px) {
+    .cuerpo {
+        width: 60rem; /* Ajusta el tamaño según tus necesidades */
+        height: 60rem;
+    }
+}
+
+/* Para pantallas de 1366x720 */
+@media (min-width: 1366px) and (max-width: 1279px) {
+    .cuerpo {
+        width: 50rem; /* Ajusta el tamaño según tus necesidades */
+        height: 50rem;
+    }
+}
+@media (min-width: 481px) and (max-width: 1278px) {
+    .cuerpo {
+        width: 45rem; /* Ajusta el tamaño según tus necesidades */
+        height: 45rem;
+        background-color: yellow;
+    }
+    .header {
+    grid-template-columns: 20% 60% 20%;
+    }
+}
+
+/* Para pantallas de 480px */
+@media (max-width: 480px) {
+    .header {
+        grid-template-columns: 1fr; /* Cambia el layout para pantallas más pequeñas */
+    }
+
+    .cuerpo {
+        width: 30rem; /* Ajusta el tamaño según tus necesidades */
+        height: 30rem;
+    }
+
+    .modal-title {
+        font-size: 2rem; /* Ajusta el tamaño del texto en el modal */
+    }
+
+    .modal-description {
+        font-size: 1.5rem; /* Ajusta el tamaño del texto en el modal */
+    }
+
+    .modal-image {
+        width: 10rem; /* Ajusta el tamaño de la imagen en el modal */
+        height: 10rem;
+    }
+}
+
+/* Para pantallas de 375px */
+@media (max-width: 375px) {
+    .header h1 {
+        font-size: 1rem; /* Ajusta el tamaño del texto en la cabecera */
+    }
+
+    .header a {
+        font-size: 1.5rem; /* Ajusta el tamaño del texto en los enlaces */
+    }
+
+    .cuerpo {
+        width: 25rem; /* Ajusta el tamaño según tus necesidades */
+        height: 25rem;
+    }
+}
