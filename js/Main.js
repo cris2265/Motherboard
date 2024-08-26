@@ -1,6 +1,5 @@
 import { componentes } from "./basedatos.js";
 
-// Selecciona el elemento root para agregar la estructura HTML
 let doom = document.querySelector(".root");
 
 doom.innerHTML = `
@@ -13,7 +12,7 @@ doom.innerHTML = `
         <span>Fuentes de poder</span>
         <span>Placa Madre</span>
     </div>
-    <a href="#">Github</a>
+    <a href="https://github.com/cris2265">Github</a>
 </header>
 <section class="separador"></section>
 <main class="cuerpo"></main>
@@ -31,7 +30,6 @@ doom.innerHTML = `
 </div>
 `;
 
-// Crear inputs de categorías
 let categoriasUnicas = new Set();
 let section = document.querySelector(".separador");
 let cuerpo = document.querySelector(".cuerpo");
@@ -42,7 +40,6 @@ let modalImage = modal.querySelector(".modal-image");
 let span = modal.querySelector(".close");
 let downloadButton = modal.querySelector("#download");
 
-// Crear inputs de categorías y agregarlos a la sección
 componentes.forEach((nose) => {
     if (!categoriasUnicas.has(nose.categoria)) {
         categoriasUnicas.add(nose.categoria);
@@ -59,7 +56,6 @@ componentes.forEach((nose) => {
     }
 });
 
-// Crear componentes y agregarlos al cuerpo
 componentes.forEach((dato, index) => {
     let div = document.createElement("div");
     div.classList.add("componente", `componente-${index + 1}`);
@@ -68,41 +64,35 @@ componentes.forEach((dato, index) => {
     cuerpo.appendChild(div);
 });
 
-// Función para abrir el modal
 function openModal(dato) {
     modalTitle.innerText = dato.nombre;
     modalDescription.innerText = dato.descripcion;
     modalImage.src = dato.img;
     modal.style.display = "block";
 
-    // Añadir evento al botón de descarga
     downloadButton.onclick = () => {
         downloadModalContent();
     };
 }
 
-// Función para cerrar el modal
 function closeModal() {
     modal.style.display = "none";
 }
 
-// Función para descargar el contenido del modal como una imagen
 function downloadModalContent() {
     html2canvas(modal.querySelector('.modal-content'), {
-        useCORS: true, // Habilitar CORS para cargar imágenes externas
-        allowTaint: true // Permitir imágenes sin CORS
+        useCORS: true,
+        allowTaint: true 
     }).then(canvas => {
         const link = document.createElement('a');
         link.href = canvas.toDataURL('image/png');
-        link.download = 'modal-content.png'; // Nombre del archivo descargado
+        link.download = 'modal-content.png';
         link.click();
     });
 }
 
-// Event listener para cerrar el modal
 span.onclick = closeModal;
 
-// Cerrar el modal cuando se haga clic fuera de él
 window.onclick = function(event) {
     if (event.target == modal) {
         closeModal();
@@ -114,17 +104,14 @@ section.addEventListener("change", (event) => {
     if (event.target.tagName === "INPUT" && event.target.type === "checkbox") {
         let componentes = document.querySelectorAll(".componente");
 
-        // Obtener todas las categorías seleccionadas
         let categoriasSeleccionadas = Array.from(document.querySelectorAll("input[type='checkbox']:checked"))
             .map(input => input.id.replace('category-', ''));
 
-        // Eliminar la clase que pinta los componentes
         componentes.forEach((componente) => {
             componente.style.display = "none";
             componente.classList.remove("pintado");
         });
 
-        // Pintar y mostrar solo los componentes que coincidan con las categorías seleccionadas
         componentes.forEach((componente) => {
             if (categoriasSeleccionadas.includes(componente.dataset.categoria)) {
                 componente.style.display = "block";
@@ -132,7 +119,6 @@ section.addEventListener("change", (event) => {
             }
         });
 
-        // Si no hay ninguna categoría seleccionada, mostrar todos los componentes
         if (categoriasSeleccionadas.length === 0) {
             componentes.forEach((componente) => {
                 componente.style.display = "block";
